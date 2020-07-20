@@ -6,16 +6,33 @@ namespace Calculator
     {
         static void Main(string[] args)
         {
+            var coreTest = new DomainService(new DefaultLocalizedMessages());
+            coreTest.CheckMath();
+        }
+    }
+
+    //its not pure, but i dont care
+    public class DomainService
+    {
+        private readonly ILocalizedMessages _localizer;
+
+        public DomainService(ILocalizedMessages localizer)
+        {
+            _localizer = localizer;
+        }
+
+        //ooff nice side-effects
+        public void CheckMath()
+        {
             Console.WriteLine("2+2= ?");
             int x = Convert.ToInt32(Console.ReadLine());
-            var r = new DefaultLocalizedMessages();
             if (x == 4)
             {
-                Console.WriteLine(r.Success);
+                Console.WriteLine(_localizer.Success);
             }
             else
             {
-                Console.WriteLine(r.Fail);
+                Console.WriteLine(_localizer.Fail);
             }
         }
     }
