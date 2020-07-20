@@ -17,7 +17,6 @@ namespace Calculator
             {
                 Console.WriteLine(r.Fail);
             }
-
         }
     }
 
